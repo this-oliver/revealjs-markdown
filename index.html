@@ -1,40 +1,91 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
-		<title>reveal.js</title>
+    <title>reveal.js</title>
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" />
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+  </head>
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <!-- markdown file will be added here automatically (see line 68) -->
+      </div>
+    </div>
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // initialize reveal.js
+      function initReveal() {
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+          hash: true,
+          autoPlayMedia: true,
+
+          // Learn about plugins: https://revealjs.com/plugins/
+          plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+        });
+      }
+
+      // extract all markdown files from list in index.md
+      function extractFileNames(indexFile) {
+        // split the text into an array of files based on new line (SUPPORT wINDOWS)
+        let lines = indexFile.split(/\r?\n/);
+
+        // filter out empty lines
+        lines = lines.filter((line) => line.length > 0);
+
+        // filter out all lines that do not follow `1. filename.md` pattern
+        lines = lines.filter((line) => line.match(/^\d+\.\s.+\.md$/));
+
+        // sort the files based on the number at the beginning of each line
+        lines.sort((a, b) => {
+          const aNumber = parseInt(a.match(/^\d+/)[0]);
+          const bNumber = parseInt(b.match(/^\d+/)[0]);
+          return aNumber - bNumber;
+        });
+
+        // remove the number and dot (i.e. 1.) from the beginning of each line
+        return lines.map((line) => line.replace(/^\d+\.\s/, ""));
+      }
+
+      fetch("./slides/index.md")
+        .then((response) => response.text())
+        // extract array of markdown files from index.md
+        .then((text) => extractFileNames(text))
+        // add all files to the slides div
+        .then((files) => {
+          const basePath = "./slides/";
+          files.forEach((file) => {
+            const filePath = basePath + file;
+            const speratorHorizontal = "^\\n---\\n$"; // separator for horizontal slides
+            const sepratorVertical = "^\\n--\\n$"; // separator for vertical slides
+
+            const section = document.createElement("section");
+            section.setAttribute("data-markdown", filePath);
+            section.setAttribute("data-separator", speratorHorizontal);
+            section.setAttribute("data-separator-vertical", sepratorVertical);
+            document.querySelector(".slides").appendChild(section);
+          });
+        })
+        // initialize reveal.js
+        .finally(initReveal);
+    </script>
+  </body>
 </html>

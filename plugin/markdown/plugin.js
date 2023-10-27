@@ -134,6 +134,9 @@ const Plugin = () => {
 	 */
 	function slidify( markdown, options ) {
 
+		// convert windows newlines into unix newlines
+		markdown = markdown.replace( /\r\n?/g, '\n' );
+
 		options = getSlidifyOptions( options );
 
 		const separatorRegex = new RegExp( options.separator + ( options.verticalSeparator ? '|' + options.verticalSeparator : '' ), 'mg' ),

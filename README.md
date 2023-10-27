@@ -1,50 +1,64 @@
-<p align="center">
-  <a href="https://revealjs.com">
-  <img src="https://hakim-static.s3.amazonaws.com/reveal-js/logo/v1/reveal-black-text-sticker.png" alt="reveal.js" width="500">
-  </a>
-  <br><br>
-  <a href="https://github.com/hakimel/reveal.js/actions"><img src="https://github.com/hakimel/reveal.js/workflows/tests/badge.svg"></a>
-  <a href="https://slides.com/"><img src="https://s3.amazonaws.com/static.slid.es/images/slides-github-banner-320x40.png?1" alt="Slides" width="160" height="20"></a>
-</p>
+# Reveal.js Markdown Only
 
-reveal.js is an open source HTML presentation framework. It enables anyone with a web browser to create beautiful presentations for free. Check out the live demo at [revealjs.com](https://revealjs.com/).
+> Use `reveal.js` without having to touch a single line of HTML
 
-The framework comes with a powerful feature set including [nested slides](https://revealjs.com/vertical-slides/), [Markdown support](https://revealjs.com/markdown/), [Auto-Animate](https://revealjs.com/auto-animate/), [PDF export](https://revealjs.com/pdf-export/), [speaker notes](https://revealjs.com/speaker-view/), [LaTeX typesetting](https://revealjs.com/math/), [syntax highlighted code](https://revealjs.com/code/) and an [extensive API](https://revealjs.com/api/).
+`reveal.js` is a nice presentation framework but it can be a bit daunting to get started with especially if you are not familiar with HTML. The purpose of this fork is to provide a template that uses markdown, exclusively, for creating slides.
 
----
+## Installations
 
-Want to create reveal.js presentation in a graphical editor? Try <https://slides.com>. It's made by the same people behind reveal.js.
+In order to use this repository, you need the following prerequisites:
 
----
+- nodejs installed
+- npm installed and configured
 
-### Sponsors
-Hakim's open source work is supported by <a href="https://github.com/sponsors/hakimel">GitHub sponsors</a>. Special thanks to:
-<div align="center">
-  <table>
-    <td align="center">
-      <a href="https://workos.com/?utm_campaign=github_repo&utm_medium=referral&utm_content=revealjs&utm_source=github">
-        <div>
-          <img src="https://user-images.githubusercontent.com/629429/151508669-efb4c3b3-8fe3-45eb-8e47-e9510b5f0af1.svg" width="290" alt="WorkOS">
-        </div>
-        <b>Your app, enterprise-ready.</b>
-        <div>
-          <sub>Start selling to enterprise customers with just a few lines of code. Add Single Sign-On (and more) in minutes instead of months.</sup>
-        </div>
-      </a>
-    </td>
-  </table>
-</div>
+To install the dependencies, run `npm install` in the root directory of the repository.
 
----
+## Getting started
 
-### Getting started
-- 🚀 [Install reveal.js](https://revealjs.com/installation)
-- 👀 [View the demo presentation](https://revealjs.com/demo)
-- 📖 [Read the documentation](https://revealjs.com/markup/)
-- 🖌 [Try the visual editor for reveal.js at Slides.com](https://slides.com/)
-- 🎬 [Watch the reveal.js video course (paid)](https://revealjs.com/course)
+To get started, run `npm start` in the root directory of the repository. You can access the presentation in your browser by opening [http://localhost:8000](http://localhost:8000).
 
---- 
-<div align="center">
-  MIT licensed | Copyright © 2011-2023 Hakim El Hattab, https://hakim.se
-</div>
+## Usage
+
+> [!TIP]
+> 
+> Run `npm start` to start the presentation server and follow the tutorial
+
+This is a basic template for a reveal.js presentation that uses markdown. All you have to do is edit the markdown files in the `slides` folder and update the `slides/index.html` file accordingly.
+
+### Step 1. Adding slides
+
+First, you create a new markdown file `example.md` in the `slides` folder.
+
+### Step 2. Updating the slides/index.html file
+
+> [!WARNING]
+>
+> The order of the slides is determined by the order of the list items in the `index.md` file. Make sure to update the list accordingly.
+
+Add the file name to the `index.md` file in the `slides` folder. 
+
+```md
+<!-- in slides/index.md (note: the numbers matter!!!)-->
+1. simple.md
+2. images.md
+3. audio.md
+4. code.md
+5. tables.md
+6. all-in-one.md
+7. example.md
+```
+
+### Good to know
+
+The number in front of the file name **determine the order of the slides** in the presentation. That means you can easily re-order your slides by changing the order of the list items.
+
+```md
+<!-- in slides/index.md-->
+1. first-file.md
+3. third-file.md
+2. second-file.md
+```
+
+## Credits
+
+This repo was forked from hakimel/reveal.js (v5.0.0)

@@ -1,7 +1,7 @@
 {
-  "name": "reveal.js",
+  "name": "revealjs-markdown",
   "version": "5.0.0",
-  "description": "The HTML Presentation Framework",
+  "description": "reveal.js template that uses markdown, exclusively, for creating slides",
   "homepage": "https://revealjs.com",
   "subdomain": "revealjs",
   "main": "dist/reveal.js",
