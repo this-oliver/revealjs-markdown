@@ -4,23 +4,20 @@
 
 `reveal.js` is a nice presentation framework but it can be a bit daunting to get started with especially if you are not familiar with HTML. The purpose of this fork is to provide a template that uses markdown, exclusively, for creating slides.
 
-## Installations
-
-In order to use this repository, you need the following prerequisites:
-
-- nodejs installed
-- npm installed and configured
-
-To install the dependencies, run `npm install` in the root directory of the repository.
-
 ## Getting started
 
-To get started, run `npm start` in the root directory of the repository. You can access the presentation in your browser by opening [http://localhost:8000](http://localhost:8000).
+```bash
+# install packages
+npm install
+
+# start development server
+npm start
+```
+
+Once you start the server, you can access the presentation in your browser by opening [http://localhost:8000](http://localhost:8000).
 
 ## Usage
 
-> [!TIP]
-> 
 > Run `npm start` to start the presentation server and follow the tutorial
 
 This is a basic template for a reveal.js presentation that uses markdown. All you have to do is edit the markdown files in the `slides` folder and update the `slides/index.html` file accordingly.
