@@ -20,7 +20,7 @@ Once you start the server, you can access the presentation in your browser by op
 
 > Run `npm start` to start the presentation server and follow the tutorial
 
-This is a basic template for a reveal.js presentation that uses markdown. All you have to do is edit the markdown files in the `slides` folder and update the `slides/index.html` file accordingly.
+This is a basic template for a reveal.js presentation that uses markdown. All you have to do is edit the markdown files in the `slides` folder and update the `slides/index.md` file accordingly.
 
 ### Step 1. Adding slides
 
