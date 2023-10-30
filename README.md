@@ -7,7 +7,7 @@
 ## Getting started
 
 ```bash
-# install packages
+# install dependancies
 npm install
 
 # start development server
@@ -22,17 +22,15 @@ Once you start the server, you can access the presentation in your browser by op
 
 This is a basic template for a reveal.js presentation that uses markdown. All you have to do is edit the markdown files in the `slides` folder and update the `slides/index.md` file accordingly.
 
-### Step 1. Adding slides
+### Step 1. Create slides
 
-First, you create a new markdown file `example.md` in the `slides` folder.
+Create your slides as markdown file (i.e. `slide-01.md`) in the `slides` folder. You can view some examples [here](./slides).
 
-### Step 2. Updating the slides/index.html file
+### Step 2. Add the slide to the presentation
 
-> [!WARNING]
->
-> The order of the slides is determined by the order of the list items in the `index.md` file. Make sure to update the list accordingly.
+> The order of the file name **determines the order of the slide** in the presentation.
 
-Add the file name to the `index.md` file in the `slides` folder. 
+Add the slides to your presentation by adding the file name (i.e. `slide-01.md`) to the `index.md` file in the `slides` folder. 
 
 ```md
 <!-- in slides/index.md (note: the numbers matter!!!)-->
@@ -42,18 +40,19 @@ Add the file name to the `index.md` file in the `slides` folder.
 4. code.md
 5. tables.md
 6. all-in-one.md
-7. example.md
+7. slide-01.md
 ```
 
-### Good to know
-
-The number in front of the file name **determine the order of the slides** in the presentation. That means you can easily re-order your slides by changing the order of the list items.
+**Order matters**. Slides are ordered based on their position in the numbered list. That means you can easily re-order your slides by changing the order of the list items.
 
 ```md
 <!-- in slides/index.md-->
-1. first-file.md
-3. third-file.md
-2. second-file.md
+1. slide-01.md
+3. slide-02.md
+2. slide-03.md
+
+<!-- presentation order -->
+`slide-01.md -> slide-03.md -> slide-02.md`
 ```
 
 ## Credits
